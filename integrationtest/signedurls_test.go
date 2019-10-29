@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
+	"strings"
 	"testing"
 	"time"
 
@@ -133,6 +134,14 @@ func createAndTestExampleSignedURL(myQueue *tcqueue.Queue, t *testing.T) {
 	}
 }
 
+// testWorkerType returns a fake workerType identifier that conforms to
+// workerType naming restrictions.
+//
+// See https://bugzil.la/1553953
+func testWorkerType() string {
+	return "test-" + strings.ToLower(strings.Replace(slugid.Nice(), "_", "", -1)) + "-a"
+}
+
 func createSampleTaskAndArtifact(myQueue *tcqueue.Queue, t *testing.T) (taskID string, artifactName string, artifactContent []byte) {
 	now := time.Now()
 	taskID = slugid.Nice()
@@ -150,7 +159,7 @@ func createSampleTaskAndArtifact(myQueue *tcqueue.Queue, t *testing.T) (taskID s
 		},
 		Payload:       json.RawMessage(`{}`),
 		ProvisionerID: "test-provisioner",
-		WorkerType:    slugid.Nice(),
+		WorkerType:    testWorkerType(),
 	}
 	in := bytes.NewReader(artifactContent)
 	artifacts := []tcutil.ArtifactSource{
