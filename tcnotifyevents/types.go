@@ -10,7 +10,7 @@ import (
 type (
 	// Request to post a message on IRC.
 	//
-	// See https://taskcluster-staging.net/schemas/notify/v1/irc-request.json#/oneOf[0]
+	// See https://community-tc.services.mozilla.com/schemas/notify/v1/irc-request.json#/oneOf[0]
 	ChannelMessage struct {
 
 		// Channel to post the message in.
@@ -18,7 +18,7 @@ type (
 		// Syntax:     ^[#&][^ ,\u0007]{1,199}$
 		// Min length: 1
 		//
-		// See https://taskcluster-staging.net/schemas/notify/v1/irc-request.json#/oneOf[0]/properties/channel
+		// See https://community-tc.services.mozilla.com/schemas/notify/v1/irc-request.json#/oneOf[0]/properties/channel
 		Channel string `json:"channel"`
 
 		// IRC message to send as plain text.
@@ -26,20 +26,20 @@ type (
 		// Min length: 1
 		// Max length: 510
 		//
-		// See https://taskcluster-staging.net/schemas/notify/v1/irc-request.json#/definitions/message
+		// See https://community-tc.services.mozilla.com/schemas/notify/v1/irc-request.json#/definitions/message
 		Message string `json:"message"`
 	}
 
 	// This can be pretty much anything you want it to be.
 	//
-	// See https://taskcluster-staging.net/schemas/notify/v1/notification-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/notify/v1/notification-message.json#
 	NotificationMessage struct {
 
 		// Arbitrary message.
 		//
 		// Additional properties allowed
 		//
-		// See https://taskcluster-staging.net/schemas/notify/v1/notification-message.json#/properties/message
+		// See https://community-tc.services.mozilla.com/schemas/notify/v1/notification-message.json#/properties/message
 		Message json.RawMessage `json:"message"`
 
 		// Message version
@@ -47,7 +47,7 @@ type (
 		// Possible values:
 		//   * 1
 		//
-		// See https://taskcluster-staging.net/schemas/notify/v1/notification-message.json#/properties/version
+		// See https://community-tc.services.mozilla.com/schemas/notify/v1/notification-message.json#/properties/version
 		Version int64 `json:"version,omitempty"`
 	}
 
@@ -57,12 +57,12 @@ type (
 	//   * ChannelMessage
 	//   * PrivateMessage
 	//
-	// See https://taskcluster-staging.net/schemas/notify/v1/irc-request.json#
+	// See https://community-tc.services.mozilla.com/schemas/notify/v1/irc-request.json#
 	PostIRCMessageRequest json.RawMessage
 
 	// Request to post a message on IRC.
 	//
-	// See https://taskcluster-staging.net/schemas/notify/v1/irc-request.json#/oneOf[1]
+	// See https://community-tc.services.mozilla.com/schemas/notify/v1/irc-request.json#/oneOf[1]
 	PrivateMessage struct {
 
 		// IRC message to send as plain text.
@@ -70,7 +70,7 @@ type (
 		// Min length: 1
 		// Max length: 510
 		//
-		// See https://taskcluster-staging.net/schemas/notify/v1/irc-request.json#/definitions/message
+		// See https://community-tc.services.mozilla.com/schemas/notify/v1/irc-request.json#/definitions/message
 		Message string `json:"message"`
 
 		// User to post the message to.
@@ -79,7 +79,7 @@ type (
 		// Min length: 1
 		// Max length: 255
 		//
-		// See https://taskcluster-staging.net/schemas/notify/v1/irc-request.json#/oneOf[1]/properties/user
+		// See https://community-tc.services.mozilla.com/schemas/notify/v1/irc-request.json#/oneOf[1]/properties/user
 		User string `json:"user"`
 	}
 )

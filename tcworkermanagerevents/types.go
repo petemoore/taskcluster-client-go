@@ -5,7 +5,7 @@ package tcworkermanagerevents
 type (
 	// The message that is emitted when worker pools are created/changed/deleted.
 	//
-	// See https://taskcluster-staging.net/schemas/worker-manager/v1/pulse-worker-pool-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/worker-manager/v1/pulse-worker-pool-message.json#
 	WorkerTypePulseMessage struct {
 
 		// If this is defined, it was the provider that handled this worker pool in the
@@ -17,7 +17,7 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/worker-manager/v1/pulse-worker-pool-message.json#/properties/previousProviderId
+		// See https://community-tc.services.mozilla.com/schemas/worker-manager/v1/pulse-worker-pool-message.json#/properties/previousProviderId
 		PreviousProviderID string `json:"previousProviderId,omitempty"`
 
 		// The provider responsible for managing this worker pool.
@@ -29,14 +29,14 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/worker-manager/v1/worker-pool-full.json#/properties/providerId
+		// See https://community-tc.services.mozilla.com/schemas/worker-manager/v1/worker-pool-full.json#/properties/providerId
 		ProviderID string `json:"providerId"`
 
 		// The ID of this worker pool (of the form `providerId/workerType` for compatibility)
 		//
 		// Syntax:     ^[a-zA-Z0-9-_]{1,38}/[a-z]([-a-z0-9]{0,36}[a-z0-9])?$
 		//
-		// See https://taskcluster-staging.net/schemas/worker-manager/v1/worker-pool-full.json#/properties/workerPoolId
+		// See https://community-tc.services.mozilla.com/schemas/worker-manager/v1/worker-pool-full.json#/properties/workerPoolId
 		WorkerPoolID string `json:"workerPoolId"`
 	}
 )

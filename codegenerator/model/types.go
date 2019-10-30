@@ -3,7 +3,7 @@
 package model
 
 type (
-	// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items
+	// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items
 	Entry struct {
 
 		// Arguments from `route` that must be replaced, they'll appear wrapped in brackets inside `route`.
@@ -11,19 +11,24 @@ type (
 		// Array items:
 		// Argument that appears in `route` warpped in angle brackets. It must be replaced to call the function.
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/args/items
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/args/items
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/args
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/args
 		Args []string `json:"args"`
+
+		// Category for the API method
+		//
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/category
+		Category string `json:"category"`
 
 		// Description (ie. documentation) for the API entry
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/description
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/description
 		Description string `json:"description"`
 
 		// JSON schema for input, if input is validated, otherwise not present. The value must be a relative URI, based on the service's schema location; that is, based at `<rootUrl>/schemas/<serviceName`.
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/input
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/input
 		Input string `json:"input,omitempty"`
 
 		// HTTP method (verb) used to access the function
@@ -55,19 +60,19 @@ type (
 		//   * "patch"
 		//   * "search"
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/method
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/method
 		Method string `json:"method"`
 
 		// Name of the `function` this is a stable identifier for use in auto-generated client libraries
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/name
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/name
 		Name string `json:"name"`
 
 		// One of:
 		//   * OutputSchema
 		//   * Blob
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/output
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/output
 		Output string `json:"output,omitempty"`
 
 		// List of accepted query-string parameters, these are always optional.
@@ -75,14 +80,14 @@ type (
 		// Array items:
 		// Optional query-string parameter
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/query/items
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/query/items
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/query
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/query
 		Query []string `json:"query,omitempty"`
 
 		// Route for the call, note that arguments wrapped with brackets, like `/user/<userId>/` must be replaced.
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/route
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/route
 		Route string `json:"route"`
 
 		// Scope expression template specifying required scopes for a method. Not provided if authentication isn't required.
@@ -93,7 +98,7 @@ type (
 		//   * Conjunction
 		//   * Conditional
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/scopes
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/scopes
 		Scopes ScopeExpressionTemplate `json:"scopes,omitempty"`
 
 		// Stability level of the API
@@ -103,12 +108,12 @@ type (
 		//   * "experimental"
 		//   * "stable"
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/stability
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/stability
 		Stability string `json:"stability"`
 
 		// Title of API entry
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/title
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/title
 		Title string `json:"title"`
 
 		// Type of entry, currently only `function`.
@@ -116,35 +121,35 @@ type (
 		// Possible values:
 		//   * "function"
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/type
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/type
 		Type string `json:"type"`
 	}
 
 	// Reference of methods implemented by API
 	//
-	// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#
+	// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#
 	APIReferenceFile struct {
 
 		// Link to schema for this reference. That is a link to this very document. Typically used to identify what kind of reference this file is.
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/$schema
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/$schema
 		Schema string `json:"$schema"`
 
 		// Version of the API
 		//
 		// Syntax:     ^v[0-9]+$
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/apiVersion
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/apiVersion
 		APIVersion string `json:"apiVersion"`
 
 		// API description in markdown
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/description
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/description
 		Description string `json:"description"`
 
 		// Array of methods in this reference
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries
 		Entries []APIEntry `json:"entries"`
 
 		// Name of service for automation. Will be consumed by client generators to produce URLs
@@ -153,12 +158,12 @@ type (
 		// Min length: 1
 		// Max length: 22
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/serviceName
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/serviceName
 		ServiceName string `json:"serviceName"`
 
 		// API title in markdown
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/title
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/title
 		Title string `json:"title"`
 	}
 
@@ -167,12 +172,12 @@ type (
 	// Possible values:
 	//   * "blob"
 	//
-	// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/output/oneOf[1]
+	// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/output/oneOf[1]
 	Blob string
 
 	// if/then objects will replace themselves with the contents of then if the `if` is true
 	//
-	// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateIf
+	// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateIf
 	Conditional struct {
 
 		// One of:
@@ -182,12 +187,12 @@ type (
 		//   * Conditional
 		//   * ForAll
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate
 		Else ScopeExpressionTemplate `json:"else,omitempty"`
 
 		// Syntax:     ^[a-zA-Z][a-zA-Z0-9_]*$
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateIf/properties/if
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateIf/properties/if
 		If string `json:"if"`
 
 		// One of:
@@ -197,13 +202,13 @@ type (
 		//   * Conditional
 		//   * ForAll
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate
 		Then ScopeExpressionTemplate `json:"then"`
 	}
 
 	// AllOf objects will evaluate to true if all subexpressions are true
 	//
-	// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateAllOf
+	// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateAllOf
 	Conjunction struct {
 
 		// Array items:
@@ -214,15 +219,15 @@ type (
 		//   * Conditional
 		//   * ForAll
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateAllOf/properties/AllOf
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateAllOf/properties/AllOf
 		AllOf []ScopeExpressionTemplate `json:"AllOf"`
 	}
 
 	// AnyOf objects will evaluate to true if any subexpressions are true
 	//
-	// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateAnyOf
+	// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateAnyOf
 	Disjunction struct {
 
 		// Array items:
@@ -233,40 +238,40 @@ type (
 		//   * Conditional
 		//   * ForAll
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateAnyOf/properties/AnyOf
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateAnyOf/properties/AnyOf
 		AnyOf []ScopeExpressionTemplate `json:"AnyOf"`
 	}
 
 	// Reference of exchanges published
 	//
-	// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#
+	// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#
 	ExchangeReferenceFile struct {
 
 		// Link to schema for this reference. That is a link to this very document. Typically used to identify what kind of reference this file is.
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/$schema
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/$schema
 		Schema string `json:"$schema"`
 
 		// Version of the API
 		//
 		// Syntax:     ^v[0-9]+$
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/apiVersion
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/apiVersion
 		APIVersion string `json:"apiVersion"`
 
 		// Description of set of exchanges in markdown
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/description
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/description
 		Description string `json:"description"`
 
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries
 		Entries []Var `json:"entries"`
 
 		// Prefix for all exchanges described in this document
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/exchangePrefix
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/exchangePrefix
 		ExchangePrefix string `json:"exchangePrefix"`
 
 		// Name of service for automation. Will be consumed by client generators to produce URLs
@@ -275,128 +280,128 @@ type (
 		// Min length: 1
 		// Max length: 22
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/serviceName
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/serviceName
 		ServiceName string `json:"serviceName"`
 
 		// Title for set of exchanges in markdown
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/title
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/title
 		Title string `json:"title"`
 	}
 
 	// for/each/in objects will replace themselves with an array of basic scopes. They will be flattened into the array this object is a part of.
 	//
-	// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate/oneOf[4]
+	// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate/oneOf[4]
 	ForAll struct {
 
 		// Syntax:     ^[\x20-\x7e]*$
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate/oneOf[4]/properties/each
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate/oneOf[4]/properties/each
 		Each string `json:"each"`
 
 		// Syntax:     ^[a-zA-Z][a-zA-Z0-9_]*$
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate/oneOf[4]/properties/for
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate/oneOf[4]/properties/for
 		For string `json:"for"`
 
 		// Syntax:     ^[a-zA-Z][a-zA-Z0-9_]*$
 		//
-		// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate/oneOf[4]/properties/in
+		// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplate/oneOf[4]/properties/in
 		In string `json:"in"`
 	}
 
 	// JSON schema for output, if output is validated, otherwise not present. The value must be a relative URI, based on the service's schema location; that is, based at `<rootUrl>/schemas/<serviceName`.
 	//
-	// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/properties/entries/items/properties/output/oneOf[0]
+	// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/properties/entries/items/properties/output/oneOf[0]
 	OutputSchema string
 
 	// The most basic element of a scope expression
 	//
 	// Syntax:     ^[\x20-\x7e]*$
 	//
-	// See https://taskcluster-staging.net/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateString
+	// See https://community-tc.services.mozilla.com/schemas/common/api-reference-v0.json#/definitions/scopeExpressionTemplateString
 	RequiredScope string
 
 	// Manifest of taskcluster service definitions available in a taskcluster service deployment.
 	// These manifests are served from `$ROOT_URL/references/manifest.json`.
 	//
-	// See https://taskcluster-staging.net/schemas/common/manifest-v3.json#
+	// See https://community-tc.services.mozilla.com/schemas/common/manifest-v3.json#
 	TaskclusterServiceManifest struct {
 
 		// Array of URLs of reference documents
 		//
 		// Array items:
-		// See https://taskcluster-staging.net/schemas/common/manifest-v3.json#/properties/references/items
+		// See https://community-tc.services.mozilla.com/schemas/common/manifest-v3.json#/properties/references/items
 		//
-		// See https://taskcluster-staging.net/schemas/common/manifest-v3.json#/properties/references
+		// See https://community-tc.services.mozilla.com/schemas/common/manifest-v3.json#/properties/references
 		References []string `json:"references"`
 	}
 
-	// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items
+	// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items
 	Var struct {
 
 		// Description (ie. documentation) for the exchange
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/description
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/description
 		Description string `json:"description"`
 
 		// Exchange name on AMQP server, must be prefixed with `exchangePrefix` from this document.
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/exchange
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/exchange
 		Exchange string `json:"exchange"`
 
 		// Name of exchange, this is a stable identifier for use in auto-generated client libraries
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/name
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/name
 		Name string `json:"name"`
 
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey
 		RoutingKey []Var1 `json:"routingKey"`
 
 		// JSON schema for messages on this exchange. The value must be a relative URI, based on the service's schema location; that is, based at `<rootUrl>/schemas/<serviceName>`.
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/schema
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/schema
 		Schema string `json:"schema"`
 
 		// Title of exchange entry
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/title
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/title
 		Title string `json:"title"`
 
 		// Type of entry, currently only `topic-exchange`.
 		//
 		// Constant value: "topic-exchange"
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/type
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/type
 		Type string `json:"type"`
 	}
 
-	// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items
+	// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items
 	Var1 struct {
 
 		// Constant to be used for this field, cannot be overwritten, only present if applicable.
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/constant
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/constant
 		Constant string `json:"constant,omitempty"`
 
 		// True, if key may contain dots, which AMQP will consider as words. This determines if `#` or `*` should be used in client libraries
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/multipleWords
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/multipleWords
 		MultipleWords bool `json:"multipleWords"`
 
 		// Identifier usable in client libraries
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/name
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/name
 		Name string `json:"name"`
 
 		// True, if the key is always present, if `false` the value `_` will be used in place when no appropriate value is available for the key.
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/required
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/required
 		Required bool `json:"required"`
 
 		// Short description of key in markdown
 		//
-		// See https://taskcluster-staging.net/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/summary
+		// See https://community-tc.services.mozilla.com/schemas/common/exchanges-reference-v0.json#/properties/entries/items/properties/routingKey/items/properties/summary
 		Summary string `json:"summary"`
 	}
 )

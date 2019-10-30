@@ -16,18 +16,18 @@ type (
 	//
 	//  	// `hookGroupId` of the hook that was changed
 	//  	//
-	//  	// See https://taskcluster-staging.net/schemas/hooks/v1/pulse-hook-changed-message.json#/properties/hookGroupId
+	//  	// See https://community-tc.services.mozilla.com/schemas/hooks/v1/pulse-hook-changed-message.json#/properties/hookGroupId
 	//  	HookGroupID string `json:"hookGroupId"`
 	//
 	//  	// `hookId` of the hook that was changed
 	//  	//
-	//  	// See https://taskcluster-staging.net/schemas/hooks/v1/pulse-hook-changed-message.json#/properties/hookId
+	//  	// See https://community-tc.services.mozilla.com/schemas/hooks/v1/pulse-hook-changed-message.json#/properties/hookId
 	//  	HookID string `json:"hookId"`
 	//  }
 	//
 	// Additional properties allowed
 	//
-	// See https://taskcluster-staging.net/schemas/hooks/v1/pulse-hook-changed-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/hooks/v1/pulse-hook-changed-message.json#
 	HookChangedMessage json.RawMessage
 )
 

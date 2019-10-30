@@ -6,7 +6,7 @@
 // go install && go generate
 //
 // This package was generated from the schema defined at
-// https://taskcluster-staging.net/references/github/v1/exchanges.json
+// https://community-tc.services.mozilla.com/references/github/v1/exchanges.json
 
 // The github service publishes a pulse
 // message for supported github events, translating Github webhook

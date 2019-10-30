@@ -9,20 +9,20 @@ import (
 type (
 	// Information about the artifact that was created
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/artifact
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/artifact
 	Artifact struct {
 
 		// Mimetype for the artifact that was created.
 		//
 		// Max length: 255
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/artifact/properties/contentType
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/artifact/properties/contentType
 		ContentType string `json:"contentType"`
 
 		// Date and time after which the artifact created will be automatically
 		// deleted by the queue.
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/artifact/properties/expires
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/artifact/properties/expires
 		Expires tcclient.Time `json:"expires"`
 
 		// Name of the artifact that was created, this is useful if you want to
@@ -31,7 +31,7 @@ type (
 		//
 		// Max length: 1024
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/artifact/properties/name
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/artifact/properties/name
 		Name string `json:"name"`
 
 		// This is the `storageType` for the request that was used to create the
@@ -42,18 +42,18 @@ type (
 		//   * "reference"
 		//   * "error"
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/artifact/properties/storageType
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/artifact/properties/storageType
 		StorageType string `json:"storageType"`
 	}
 
 	// Message reporting a new artifact has been created for a given task.
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#
 	ArtifactCreatedMessage struct {
 
 		// Information about the artifact that was created
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/artifact
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/artifact
 		Artifact Artifact `json:"artifact"`
 
 		// Id of the run on which artifact was created.
@@ -61,12 +61,12 @@ type (
 		// Mininum:    0
 		// Maximum:    1000
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/runId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/runId
 		RunID int64 `json:"runId"`
 
 		// A representation of **task status** as known by the queue
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#
 		Status TaskStatusStructure `json:"status"`
 
 		// Message version
@@ -74,7 +74,7 @@ type (
 		// Possible values:
 		//   * 1
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/version
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/version
 		Version int64 `json:"version"`
 
 		// Identifier for the worker-group within which the run with the created
@@ -84,7 +84,7 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/workerGroup
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/workerGroup
 		WorkerGroup string `json:"workerGroup"`
 
 		// Identifier for the worker within which the run with the created artifact
@@ -94,13 +94,13 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/artifact-created-message.json#/properties/workerId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/artifact-created-message.json#/properties/workerId
 		WorkerID string `json:"workerId"`
 	}
 
 	// JSON object with information about a run
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items
 	RunInformation struct {
 
 		// Reason for the creation of this run,
@@ -113,7 +113,7 @@ type (
 		//   * "rerun"
 		//   * "exception"
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/reasonCreated
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/reasonCreated
 		ReasonCreated string `json:"reasonCreated"`
 
 		// Reason that run was resolved, this is mainly
@@ -136,14 +136,14 @@ type (
 		//   * "internal-error"
 		//   * "intermittent-task"
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/reasonResolved
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/reasonResolved
 		ReasonResolved string `json:"reasonResolved,omitempty"`
 
 		// Date-time at which this run was resolved, ie. when the run changed
 		// state from `running` to either `completed`, `failed` or `exception`.
 		// This property is only present after the run as been resolved.
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/resolved
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/resolved
 		Resolved tcclient.Time `json:"resolved,omitempty"`
 
 		// Id of this task run, `run-id`s always starts from `0`
@@ -151,20 +151,20 @@ type (
 		// Mininum:    0
 		// Maximum:    1000
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/runId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/runId
 		RunID int64 `json:"runId"`
 
 		// Date-time at which this run was scheduled, ie. when the run was
 		// created in state `pending`.
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/scheduled
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/scheduled
 		Scheduled tcclient.Time `json:"scheduled"`
 
 		// Date-time at which this run was claimed, ie. when the run changed
 		// state from `pending` to `running`. This property is only present
 		// after the run has been claimed.
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/started
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/started
 		Started tcclient.Time `json:"started,omitempty"`
 
 		// State of this run
@@ -176,14 +176,14 @@ type (
 		//   * "failed"
 		//   * "exception"
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/state
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/state
 		State string `json:"state"`
 
 		// Time at which the run expires and is resolved as `failed`, if the
 		// run isn't reclaimed. Note, only present after the run has been
 		// claimed.
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/takenUntil
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/takenUntil
 		TakenUntil tcclient.Time `json:"takenUntil,omitempty"`
 
 		// Identifier for group that worker who executes this run is a part of,
@@ -194,7 +194,7 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/workerGroup
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/workerGroup
 		WorkerGroup string `json:"workerGroup,omitempty"`
 
 		// Identifier for worker evaluating this run within given
@@ -205,13 +205,35 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs/items/properties/workerId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs/items/properties/workerId
 		WorkerID string `json:"workerId,omitempty"`
+	}
+
+	// Subset of a task definition
+	//
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pending-message.json#/properties/task
+	Task struct {
+
+		// Arbitrary key-value tags (only strings limited to 4k). These can be used
+		// to attach informal metadata to a task. Use this for informal tags that
+		// tasks can be classified by. You can also think of strings here as
+		// candidates for formal metadata. Something like
+		// `purpose: 'build' || 'test'` is a good example.
+		//
+		// Default:    {}
+		//
+		// Map entries:
+		// Max length: 4096
+		//
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task.json#/properties/tags/additionalProperties
+		//
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task.json#/properties/tags
+		Tags map[string]string `json:"tags"`
 	}
 
 	// Message reporting that a task has complete successfully.
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-completed-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-completed-message.json#
 	TaskCompletedMessage struct {
 
 		// Id of the run that completed the task
@@ -219,20 +241,28 @@ type (
 		// Mininum:    0
 		// Maximum:    1000
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-completed-message.json#/properties/runId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-completed-message.json#/properties/runId
 		RunID int64 `json:"runId"`
 
 		// A representation of **task status** as known by the queue
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#
 		Status TaskStatusStructure `json:"status"`
+
+		// Subset of a task definition containing values that are useful for determining
+		// whether a message is interesting to the receiver. Where the full task
+		// definition is required, the receiver should call queue.task to download that
+		// definition.
+		//
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pulse-definition.json#
+		Task Var `json:"task,omitempty"`
 
 		// Message version
 		//
 		// Possible values:
 		//   * 1
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-completed-message.json#/properties/version
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-completed-message.json#/properties/version
 		Version int64 `json:"version"`
 
 		// Identifier for the worker-group within which this run ran.
@@ -241,7 +271,7 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-completed-message.json#/properties/workerGroup
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-completed-message.json#/properties/workerGroup
 		WorkerGroup string `json:"workerGroup"`
 
 		// Identifier for the worker that executed this run.
@@ -250,33 +280,41 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-completed-message.json#/properties/workerId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-completed-message.json#/properties/workerId
 		WorkerID string `json:"workerId"`
 	}
 
 	// Message reporting that a task has been defined. The task may or may not be
 	// _scheduled_ too.
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-defined-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-defined-message.json#
 	TaskDefinedMessage struct {
 
 		// A representation of **task status** as known by the queue
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#
 		Status TaskStatusStructure `json:"status"`
+
+		// Subset of a task definition containing values that are useful for determining
+		// whether a message is interesting to the receiver. Where the full task
+		// definition is required, the receiver should call queue.task to download that
+		// definition.
+		//
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pulse-definition.json#
+		Task Var `json:"task,omitempty"`
 
 		// Message version
 		//
 		// Possible values:
 		//   * 1
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-defined-message.json#/properties/version
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-defined-message.json#/properties/version
 		Version int64 `json:"version"`
 	}
 
 	// Message reporting that Taskcluster have failed to run a task.
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-exception-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-exception-message.json#
 	TaskExceptionMessage struct {
 
 		// Id of the last run for the task, not provided if `deadline`
@@ -285,20 +323,28 @@ type (
 		// Mininum:    0
 		// Maximum:    1000
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-exception-message.json#/properties/runId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-exception-message.json#/properties/runId
 		RunID int64 `json:"runId,omitempty"`
 
 		// A representation of **task status** as known by the queue
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#
 		Status TaskStatusStructure `json:"status"`
+
+		// Subset of a task definition containing values that are useful for determining
+		// whether a message is interesting to the receiver. Where the full task
+		// definition is required, the receiver should call queue.task to download that
+		// definition.
+		//
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pulse-definition.json#
+		Task Var `json:"task,omitempty"`
 
 		// Message version
 		//
 		// Possible values:
 		//   * 1
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-exception-message.json#/properties/version
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-exception-message.json#/properties/version
 		Version int64 `json:"version"`
 
 		// Identifier for the worker-group within which the last attempt of the task
@@ -308,7 +354,7 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-exception-message.json#/properties/workerGroup
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-exception-message.json#/properties/workerGroup
 		WorkerGroup string `json:"workerGroup,omitempty"`
 
 		// Identifier for the last worker that failed to report, causing the task
@@ -319,13 +365,13 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-exception-message.json#/properties/workerId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-exception-message.json#/properties/workerId
 		WorkerID string `json:"workerId,omitempty"`
 	}
 
 	// Message reporting that a task failed to complete successfully.
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-failed-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-failed-message.json#
 	TaskFailedMessage struct {
 
 		// Id of the run that failed.
@@ -333,20 +379,28 @@ type (
 		// Mininum:    0
 		// Maximum:    1000
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-failed-message.json#/properties/runId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-failed-message.json#/properties/runId
 		RunID int64 `json:"runId"`
 
 		// A representation of **task status** as known by the queue
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#
 		Status TaskStatusStructure `json:"status"`
+
+		// Subset of a task definition containing values that are useful for determining
+		// whether a message is interesting to the receiver. Where the full task
+		// definition is required, the receiver should call queue.task to download that
+		// definition.
+		//
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pulse-definition.json#
+		Task Var `json:"task,omitempty"`
 
 		// Message version
 		//
 		// Possible values:
 		//   * 1
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-failed-message.json#/properties/version
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-failed-message.json#/properties/version
 		Version int64 `json:"version"`
 
 		// Identifier for the worker-group within which this run ran.
@@ -355,7 +409,7 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-failed-message.json#/properties/workerGroup
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-failed-message.json#/properties/workerGroup
 		WorkerGroup string `json:"workerGroup"`
 
 		// Identifier for the worker that executed this run.
@@ -364,7 +418,7 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-failed-message.json#/properties/workerId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-failed-message.json#/properties/workerId
 		WorkerID string `json:"workerId"`
 	}
 
@@ -372,7 +426,7 @@ type (
 	// possible for a task group to later have another task added, in which
 	// case this message will be sent again once it finishes.
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-group-resolved.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-group-resolved.json#
 	TaskGroupResolvedMessage struct {
 
 		// Identifier for the scheduler that created this task-group.
@@ -381,14 +435,14 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-group-resolved.json#/properties/schedulerId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-group-resolved.json#/properties/schedulerId
 		SchedulerID string `json:"schedulerId"`
 
 		// Identifier for the task-group being listed.
 		//
 		// Syntax:     ^[A-Za-z0-9_-]{8}[Q-T][A-Za-z0-9_-][CGKOSWaeimquy26-][A-Za-z0-9_-]{10}[AQgw]$
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-group-resolved.json#/properties/taskGroupId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-group-resolved.json#/properties/taskGroupId
 		TaskGroupID string `json:"taskGroupId"`
 
 		// Message version
@@ -396,13 +450,13 @@ type (
 		// Possible values:
 		//   * 1
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-group-resolved.json#/properties/version
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-group-resolved.json#/properties/version
 		Version int64 `json:"version,omitempty"`
 	}
 
 	// Required task metadata
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-metadata.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-metadata.json#
 	TaskMetadata struct {
 
 		// Human readable description of the task, please **explain** what the
@@ -410,7 +464,7 @@ type (
 		//
 		// Max length: 32768
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-metadata.json#/properties/description
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-metadata.json#/properties/description
 		Description string `json:"description"`
 
 		// Human readable name of task, used to very briefly given an idea about
@@ -418,7 +472,7 @@ type (
 		//
 		// Max length: 255
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-metadata.json#/properties/name
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-metadata.json#/properties/name
 		Name string `json:"name"`
 
 		// E-mail of person who caused this task, e.g. the person who did
@@ -426,7 +480,7 @@ type (
 		//
 		// Max length: 255
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-metadata.json#/properties/owner
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-metadata.json#/properties/owner
 		Owner string `json:"owner"`
 
 		// Link to source of this task, should specify a file, revision and
@@ -436,13 +490,13 @@ type (
 		// Syntax:     ^https?://
 		// Max length: 4096
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-metadata.json#/properties/source
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-metadata.json#/properties/source
 		Source string `json:"source"`
 	}
 
 	// Message reporting that a task is now pending
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-pending-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pending-message.json#
 	TaskPendingMessage struct {
 
 		// Id of run that became pending, `run-id`s always starts from 0
@@ -450,26 +504,31 @@ type (
 		// Mininum:    0
 		// Maximum:    1000
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-pending-message.json#/properties/runId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pending-message.json#/properties/runId
 		RunID int64 `json:"runId"`
 
 		// A representation of **task status** as known by the queue
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#
 		Status TaskStatusStructure `json:"status"`
+
+		// Subset of a task definition
+		//
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pending-message.json#/properties/task
+		Task Task `json:"task,omitempty"`
 
 		// Message version
 		//
 		// Possible values:
 		//   * 1
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-pending-message.json#/properties/version
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pending-message.json#/properties/version
 		Version int64 `json:"version"`
 	}
 
 	// Message reporting that a given run of a task have started
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-running-message.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-running-message.json#
 	TaskRunningMessage struct {
 
 		// Id of the run that just started, always starts from 0
@@ -477,18 +536,18 @@ type (
 		// Mininum:    0
 		// Maximum:    1000
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-running-message.json#/properties/runId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-running-message.json#/properties/runId
 		RunID int64 `json:"runId"`
 
 		// A representation of **task status** as known by the queue
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#
 		Status TaskStatusStructure `json:"status"`
 
 		// Time at which the run expires and is resolved as `failed`, if the run
 		// isn't reclaimed.
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-running-message.json#/properties/takenUntil
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-running-message.json#/properties/takenUntil
 		TakenUntil tcclient.Time `json:"takenUntil"`
 
 		// Message version
@@ -496,7 +555,7 @@ type (
 		// Possible values:
 		//   * 1
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-running-message.json#/properties/version
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-running-message.json#/properties/version
 		Version int64 `json:"version"`
 
 		// Identifier for the worker-group within which this run started.
@@ -505,7 +564,7 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-running-message.json#/properties/workerGroup
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-running-message.json#/properties/workerGroup
 		WorkerGroup string `json:"workerGroup"`
 
 		// Identifier for the worker executing this run.
@@ -514,13 +573,13 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-running-message.json#/properties/workerId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-running-message.json#/properties/workerId
 		WorkerID string `json:"workerId"`
 	}
 
 	// A representation of **task status** as known by the queue
 	//
-	// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#
 	TaskStatusStructure struct {
 
 		// Deadline of the task, `pending` and `running` runs are
@@ -528,24 +587,22 @@ type (
 		// before the deadline. Note, deadline cannot be more than
 		// 5 days into the future
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/deadline
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/deadline
 		Deadline tcclient.Time `json:"deadline"`
 
 		// Task expiration, time at which task definition and
 		// status is deleted. Notice that all artifacts for the task
 		// must have an expiration that is no later than this.
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/expires
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/expires
 		Expires tcclient.Time `json:"expires"`
 
 		// Unique identifier for a provisioner, that can supply specified
 		// `workerType`
 		//
-		// Syntax:     ^([a-zA-Z0-9-_]*)$
-		// Min length: 1
-		// Max length: 38
+		// Syntax:     ^[a-zA-Z0-9-_]{1,38}$
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task.json#/properties/provisionerId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task.json#/properties/provisionerId
 		ProvisionerID string `json:"provisionerId"`
 
 		// Number of retries left for the task in case of infrastructure issues
@@ -553,12 +610,12 @@ type (
 		// Mininum:    0
 		// Maximum:    999
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/retriesLeft
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/retriesLeft
 		RetriesLeft int64 `json:"retriesLeft"`
 
 		// List of runs, ordered so that index `i` has `runId == i`
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/runs
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/runs
 		Runs []RunInformation `json:"runs"`
 
 		// All tasks in a task group must have the same `schedulerId`. This is used for several purposes:
@@ -576,7 +633,7 @@ type (
 		// Min length: 1
 		// Max length: 38
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task.json#/properties/schedulerId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task.json#/properties/schedulerId
 		SchedulerID string `json:"schedulerId"`
 
 		// State of this task. This is just an auxiliary property derived from state
@@ -590,7 +647,7 @@ type (
 		//   * "failed"
 		//   * "exception"
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/state
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/state
 		State string `json:"state"`
 
 		// Identifier for a group of tasks scheduled together with this task.
@@ -602,7 +659,7 @@ type (
 		//
 		// Syntax:     ^[A-Za-z0-9_-]{8}[Q-T][A-Za-z0-9_-][CGKOSWaeimquy26-][A-Za-z0-9_-]{10}[AQgw]$
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task.json#/properties/taskGroupId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task.json#/properties/taskGroupId
 		TaskGroupID string `json:"taskGroupId"`
 
 		// Unique task identifier, this is UUID encoded as
@@ -611,16 +668,39 @@ type (
 		//
 		// Syntax:     ^[A-Za-z0-9_-]{8}[Q-T][A-Za-z0-9_-][CGKOSWaeimquy26-][A-Za-z0-9_-]{10}[AQgw]$
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task-status.json#/properties/taskId
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-status.json#/properties/taskId
 		TaskID string `json:"taskId"`
 
 		// Unique identifier for a worker-type within a specific provisioner
 		//
-		// Syntax:     ^([a-zA-Z0-9-_]*)$
-		// Min length: 1
-		// Max length: 38
+		// Syntax:     ^[a-z]([-a-z0-9]{0,36}[a-z0-9])?$
 		//
-		// See https://taskcluster-staging.net/schemas/queue/v1/task.json#/properties/workerType
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task.json#/properties/workerType
 		WorkerType string `json:"workerType"`
+	}
+
+	// Subset of a task definition containing values that are useful for determining
+	// whether a message is interesting to the receiver. Where the full task
+	// definition is required, the receiver should call queue.task to download that
+	// definition.
+	//
+	// See https://community-tc.services.mozilla.com/schemas/queue/v1/task-pulse-definition.json#
+	Var struct {
+
+		// Arbitrary key-value tags (only strings limited to 4k). These can be used
+		// to attach informal metadata to a task. Use this for informal tags that
+		// tasks can be classified by. You can also think of strings here as
+		// candidates for formal metadata. Something like
+		// `purpose: 'build' || 'test'` is a good example.
+		//
+		// Default:    {}
+		//
+		// Map entries:
+		// Max length: 4096
+		//
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task.json#/properties/tags/additionalProperties
+		//
+		// See https://community-tc.services.mozilla.com/schemas/queue/v1/task.json#/properties/tags
+		Tags map[string]string `json:"tags"`
 	}
 )

@@ -6,7 +6,7 @@
 // go install && go generate
 //
 // This package was generated from the schema defined at
-// https://taskcluster-staging.net/references/index/v1/api.json
+// https://community-tc.services.mozilla.com/references/index/v1/api.json
 
 // The index service is responsible for indexing tasks. The service ensures that
 // tasks can be located by user-defined names.
@@ -35,8 +35,8 @@
 // Taskcluster Schema
 //
 // The source code of this go package was auto-generated from the API definition at
-// https://taskcluster-staging.net/references/index/v1/api.json together with the input and output schemas it references, downloaded on
-// Thu, 27 Jun 2019 at 07:22:00 UTC. The code was generated
+// https://community-tc.services.mozilla.com/references/index/v1/api.json together with the input and output schemas it references, downloaded on
+// Wed, 30 Oct 2019 at 16:23:00 UTC. The code was generated
 // by https://github.com/taskcluster/taskcluster-client-go/blob/master/build.sh.
 package tcindex
 

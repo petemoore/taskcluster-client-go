@@ -6,7 +6,7 @@
 // go install && go generate
 //
 // This package was generated from the schema defined at
-// https://taskcluster-staging.net/references/auth/v1/api.json
+// https://community-tc.services.mozilla.com/references/auth/v1/api.json
 
 // Authentication related API end-points for Taskcluster and related
 // services. These API end-points are of interest if you wish to:
@@ -36,8 +36,8 @@
 // Taskcluster Schema
 //
 // The source code of this go package was auto-generated from the API definition at
-// https://taskcluster-staging.net/references/auth/v1/api.json together with the input and output schemas it references, downloaded on
-// Thu, 27 Jun 2019 at 07:22:00 UTC. The code was generated
+// https://community-tc.services.mozilla.com/references/auth/v1/api.json together with the input and output schemas it references, downloaded on
+// Wed, 30 Oct 2019 at 16:23:00 UTC. The code was generated
 // by https://github.com/taskcluster/taskcluster-client-go/blob/master/build.sh.
 package tcauth
 
@@ -243,8 +243,11 @@ func (auth *Auth) DeleteClient(clientId string) error {
 	return err
 }
 
-// Get a list of all roles, each role object also includes the list of
-// scopes it expands to.
+// Get a list of all roles. Each role object also includes the list of
+// scopes it expands to.  This always returns all roles in a single HTTP
+// request.
+//
+// To get paginated results, use `listRoles2`.
 //
 // See #listRoles
 func (auth *Auth) ListRoles() (*GetAllRolesNoPagination, error) {
@@ -253,24 +256,10 @@ func (auth *Auth) ListRoles() (*GetAllRolesNoPagination, error) {
 	return responseObject.(*GetAllRolesNoPagination), err
 }
 
-// If no limit is given, the roleIds of all roles are returned. Since this
-// list may become long, callers can use the `limit` and `continuationToken`
-// query arguments to page through the responses.
+// Get a list of all roles. Each role object also includes the list of
+// scopes it expands to.  This is similar to `listRoles` but differs in the
+// format of the response.
 //
-// See #listRoleIds
-func (auth *Auth) ListRoleIds(continuationToken, limit string) (*GetRoleIdsResponse, error) {
-	v := url.Values{}
-	if continuationToken != "" {
-		v.Add("continuationToken", continuationToken)
-	}
-	if limit != "" {
-		v.Add("limit", limit)
-	}
-	cd := tcclient.Client(*auth)
-	responseObject, _, err := (&cd).APICall(nil, "GET", "/roleids/", new(GetRoleIdsResponse), v)
-	return responseObject.(*GetRoleIdsResponse), err
-}
-
 // If no limit is given, all roles are returned. Since this
 // list may become long, callers can use the `limit` and `continuationToken`
 // query arguments to page through the responses.
@@ -287,6 +276,26 @@ func (auth *Auth) ListRoles2(continuationToken, limit string) (*GetAllRolesRespo
 	cd := tcclient.Client(*auth)
 	responseObject, _, err := (&cd).APICall(nil, "GET", "/roles2/", new(GetAllRolesResponse), v)
 	return responseObject.(*GetAllRolesResponse), err
+}
+
+// Get a list of all role IDs.
+//
+// If no limit is given, the roleIds of all roles are returned. Since this
+// list may become long, callers can use the `limit` and `continuationToken`
+// query arguments to page through the responses.
+//
+// See #listRoleIds
+func (auth *Auth) ListRoleIds(continuationToken, limit string) (*GetRoleIdsResponse, error) {
+	v := url.Values{}
+	if continuationToken != "" {
+		v.Add("continuationToken", continuationToken)
+	}
+	if limit != "" {
+		v.Add("limit", limit)
+	}
+	cd := tcclient.Client(*auth)
+	responseObject, _, err := (&cd).APICall(nil, "GET", "/roleids/", new(GetRoleIdsResponse), v)
+	return responseObject.(*GetRoleIdsResponse), err
 }
 
 // Get information about a single role, including the set of scopes that the
@@ -352,21 +361,6 @@ func (auth *Auth) DeleteRole(roleId string) error {
 	cd := tcclient.Client(*auth)
 	_, _, err := (&cd).APICall(nil, "DELETE", "/roles/"+url.QueryEscape(roleId), nil, nil)
 	return err
-}
-
-// Stability: *** DEPRECATED ***
-//
-// Return an expanded copy of the given scopeset, with scopes implied by any
-// roles included.
-//
-// This call uses the GET method with an HTTP body.  It remains only for
-// backward compatibility.
-//
-// See #expandScopesGet
-func (auth *Auth) ExpandScopesGet(payload *SetOfScopes) (*SetOfScopes, error) {
-	cd := tcclient.Client(*auth)
-	responseObject, _, err := (&cd).APICall(payload, "GET", "/scopes/expand", new(SetOfScopes), nil)
-	return responseObject.(*SetOfScopes), err
 }
 
 // Return an expanded copy of the given scopeset, with scopes implied by any
@@ -644,6 +638,8 @@ func (auth *Auth) AzureContainerSAS_SignedURL(account, container, level string, 
 	return (&cd).SignedURL("/azure/"+url.QueryEscape(account)+"/containers/"+url.QueryEscape(container)+"/"+url.QueryEscape(level), nil, duration)
 }
 
+// Stability: *** DEPRECATED ***
+//
 // Get temporary DSN (access credentials) for a sentry project.
 // The credentials returned can be used with any Sentry client for up to
 // 24 hours, after which the credentials will be automatically disabled.
