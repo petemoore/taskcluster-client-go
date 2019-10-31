@@ -1,4 +1,4 @@
-Generated: 1572452583
+Generated: 1572546187
 The following file is an auto-generated static dump of the API models at time of code generation.
 It is provided here for reference purposes, but is not used by any code.
 
@@ -5310,7 +5310,7 @@ properties:
       TYPE_NAME: ""
       description: |
         Template for the task definition.  This is rendered using [JSON-e](https://taskcluster.github.io/json-e/)
-        as described in [firing hooks](/docs/reference/core/taskcluster-hooks/docs/firing-hooks) to produce
+        as described in [firing hooks](/docs/reference/core/hooks/firing-hooks) to produce
         a task definition that is submitted to the Queue service.
       title: Task Template
       type: object
@@ -5549,7 +5549,7 @@ properties:
       TYPE_NAME: ""
       description: |
         Template for the task definition.  This is rendered using [JSON-e](https://taskcluster.github.io/json-e/)
-        as described in [firing hooks](/docs/reference/core/taskcluster-hooks/docs/firing-hooks) to produce
+        as described in [firing hooks](/docs/reference/core/hooks/firing-hooks) to produce
         a task definition that is submitted to the Queue service.
       title: Task Template
       type: object
@@ -6245,7 +6245,7 @@ properties:
                 TYPE_NAME: ""
                 description: |
                   Template for the task definition.  This is rendered using [JSON-e](https://taskcluster.github.io/json-e/)
-                  as described in [firing hooks](/docs/reference/core/taskcluster-hooks/docs/firing-hooks) to produce
+                  as described in [firing hooks](/docs/reference/core/hooks/firing-hooks) to produce
                   a task definition that is submitted to the Queue service.
                 title: Task Template
                 type: object

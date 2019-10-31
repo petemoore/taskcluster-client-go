@@ -36,7 +36,7 @@
 //
 // The source code of this go package was auto-generated from the API definition at
 // https://community-tc.services.mozilla.com/references/index/v1/api.json together with the input and output schemas it references, downloaded on
-// Wed, 30 Oct 2019 at 16:23:00 UTC. The code was generated
+// Thu, 31 Oct 2019 at 18:23:00 UTC. The code was generated
 // by https://github.com/taskcluster/taskcluster-client-go/blob/master/build.sh.
 package tcindex
 
